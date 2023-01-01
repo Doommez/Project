@@ -1,48 +1,89 @@
 <template>
-  <v-app>
-    <v-navigation-drawer
-      expand-on-hover
-      width="92"
-      class="d-flex align-end"
-    >
-      <img
-        class="logo"
-        src="./assets/Icon.svg"
-        alt="logo"
-      >
-      <v-list
-        density="compact"
-        nav
-      >
-        <v-list-item
-          prepend-icon="mdi-folder"
-          class="ma-5"
-        />
-        <v-list-item
-          prepend-icon="mdi-account-multiple"
-          class="ma-5"
-        />
-        <v-list-item
-          prepend-icon="mdi-star"
-          class="ma-5"
-        />
-      </v-list>
-      <v-list
-        density="compact"
-        nav
-      >
-        <v-list-item
-          prepend-icon="mdi-logout"
-          class="ma-5"
-        />
-      </v-list>
-    </v-navigation-drawer>
-    <router-view />
-  </v-app>
+  <h2>Vibrant Stars</h2>
+  <starRating
+    inactive-color="#e1bad9"
+    active-color="#cc1166"
+  />
+  <starRating
+    v-model:rating="rating"
+    inactive-color="#e1bad9"
+    active-color="#cc1166"
+  />
 </template>
 
 <script setup>
+  import {ref} from 'vue';
+  import starRating from 'vue-star-rating';
 
+  const rating = ref(0);
+
+  const columns = ref([
+    {
+      label: 'Name',
+      field: 'name',
+    },
+    {
+      label: 'Age',
+      field: 'age',
+      type: 'number',
+    },
+    {
+      label: 'Created On',
+      field: 'createdAt',
+      type: 'date',
+      dateInputFormat: 'yyyy-MM-dd',
+      dateOutputFormat: 'MMM do yy',
+    },
+    {
+      label: 'Percent',
+      field: 'score',
+      type: 'percentage',
+    },
+  ]);
+  const rows = ref([
+    {
+      id: 1,
+      name: 'John',
+      age: 20,
+      createdAt: '',
+      score: 0.03343,
+    },
+    {
+      id: 2,
+      name: 'Jane',
+      age: 24,
+      createdAt: '2011-10-31',
+      score: 0.03343,
+    },
+    {
+      id: 3,
+      name: 'Susan',
+      age: 16,
+      createdAt: '2011-10-30',
+      score: 0.03343,
+    },
+    {
+      id: 4,
+      name: 'Chris',
+      age: 55,
+      createdAt: '2011-10-11',
+      score: 0.03343,
+    },
+    {
+      id: 5,
+      name: 'Dan',
+      age: 40,
+      createdAt: '2011-10-21',
+      score: 0.03343,
+    },
+    {
+      id: 6,
+      name: 'John',
+      age: 20,
+      createdAt: '2011-10-31',
+      score: 0.03343,
+    },
+  ]);
 </script>
 
 <style lang="scss" scoped>
